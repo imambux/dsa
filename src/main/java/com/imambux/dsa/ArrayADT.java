@@ -117,4 +117,55 @@ public class ArrayADT {
 
         return -1;
     }
+
+    /*
+    * Binary search algorithm works on the sorted array only
+    * */
+    public int binarySearch(int value) {
+        // set 3 indices required for binary search
+        int low = 0;
+        int high = length - 1;
+        int mid;
+
+        // loop until mid is not equal to the value or low index is not higher than the high index
+        while (low <= high) {
+            // with new low and high set new mid index
+            mid = (low + high) / 2;
+
+            // check if value is found in the mid
+            if (array[mid] == value) {
+                return mid;
+            }
+
+            // if value is still not found in the mid then adust the indices for low or high
+            if (value < array[mid]) {
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+
+        return -1;
+    }
+
+    /*
+     * Binary search algorithm works on the sorted array only
+     * This uses tail recursion. Always prefer loop to tail recursion because that is easy to implement and
+     * also avoid stack
+     * */
+    public int rBinarySearch(int low, int high, int value) {
+        // if done with all the elements, then exit with -1 to indicate the value is not found
+        if (low >= high) return -1;
+
+        // with valid low and high, find a mid and check with the value
+        int mid = (low + high) / 2;
+        if (array[mid] == value) return mid;
+
+        // if the value is still not found in the mid, then adjust the indices for low or high
+        if (value < array[mid]) {
+            return rBinarySearch(low, mid - 1, value);
+        } else {
+            return rBinarySearch(mid + 1, high, value);
+        }
+    }
 }
