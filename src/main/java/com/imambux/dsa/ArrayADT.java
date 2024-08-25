@@ -120,6 +120,7 @@ public class ArrayADT {
 
     /*
     * Binary search algorithm works on the sorted array only
+    * O(log n)
     * */
     public int binarySearch(int value) {
         // set 3 indices required for binary search
@@ -167,5 +168,54 @@ public class ArrayADT {
         } else {
             return rBinarySearch(mid + 1, high, value);
         }
+    }
+
+    public int get(int index) {
+        if (index >= 0 && index < length) {
+            return array[index];
+        }
+
+        return -1;
+    }
+
+    public void set(int value, int index) {
+        if (index >= 0 && index < length) {
+            array[index] = value;
+        }
+    }
+
+    public int max() {
+        int max = array[0];
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] > max) {
+                max = array[i];
+            }
+        }
+
+        return max;
+    }
+
+    public int min() {
+        int min = array[0];
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] < min) {
+                min = array[i];
+            }
+        }
+
+        return min;
+    }
+
+    public int sum() {
+        int total = 0;
+        for (int i = 0; i < array.length; i++) {
+            total += array[i];
+        }
+
+        return total;
+    }
+
+    public int average() {
+        return sum() / length;
     }
 }
