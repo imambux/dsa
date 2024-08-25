@@ -95,4 +95,26 @@ public class ArrayADT {
 
         return -1;
     }
+
+    /*
+     * O(n)
+     * Improving Linear Search by Move to Head/Front Technique
+     * Move to Front = If the value is searched and found, move it the front by swapping the value with index 0
+     */
+    public int linearSearchByMoveToHead(int value) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == value) {
+                // Move to front: swap the value to the front position at index 0
+                if (i > 0) {
+                    int temp = array[i];
+                    array[i] = array[0];
+                    array[0] = temp;
+                    return 0;
+                }
+                return i;
+            }
+        }
+
+        return -1;
+    }
 }
