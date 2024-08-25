@@ -43,7 +43,15 @@ public class ArrayADT {
             array[index] = value;
             length++;
         }
+    }
 
-
+    public void delete(int index) {
+        if (index >= 0 && index < length) {
+            System.out.printf("Delete element at index %d", index);
+            for (int i = index; i < length - 1; i++) {
+                array[i] = array[i + 1];
+            }
+            length--;
+        }
     }
 }
