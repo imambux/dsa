@@ -37,7 +37,7 @@ public class ArrayADT {
     public void insert(int value, int index) {
         if (index >= 0 && index <= length) {
             System.out.printf("Insert %d at index %d%n", value, index);
-            for (int i = length; i > index ; i--) {
+            for (int i = length; i > index; i--) {
                 array[i] = array[i - 1];
             }
             array[index] = value;
@@ -45,13 +45,18 @@ public class ArrayADT {
         }
     }
 
-    public void delete(int index) {
+    public int delete(int index) {
         if (index >= 0 && index < length) {
+            int deletedValue = array[index];
             System.out.printf("Delete element at index %d", index);
             for (int i = index; i < length - 1; i++) {
                 array[i] = array[i + 1];
             }
             length--;
+
+            return deletedValue;
         }
+
+        return 0;
     }
 }
