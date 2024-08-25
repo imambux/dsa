@@ -1,3 +1,5 @@
+package com.imambux.dsa;
+
 public class SumOfFirstNNaturalNumbers {
 
     /*

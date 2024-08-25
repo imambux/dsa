@@ -1,4 +1,4 @@
-package util;
+package com.imambux.dsa.util;
 
 import java.util.Scanner;
 

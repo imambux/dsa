@@ -1,3 +1,5 @@
+package com.imambux.dsa;
+
 /*
  * Combination Formula: ^nC_r = n! / r!(n - r)!
  * Pascals Triangle: ^nC_r = ^{n-1}C_{r-1} + ^{n-1}C_{r} - used for recursion

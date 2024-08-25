@@ -1,3 +1,5 @@
+package com.imambux.dsa;
+
 public class PowerOfM {
 
     public static int rPowOf(int m, int n) {

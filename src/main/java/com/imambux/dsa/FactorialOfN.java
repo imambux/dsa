@@ -1,3 +1,4 @@
+package com.imambux.dsa;
 
 /*
 * 0! = 1

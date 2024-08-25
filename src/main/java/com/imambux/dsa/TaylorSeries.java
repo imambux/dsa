@@ -1,3 +1,5 @@
+package com.imambux.dsa;
+
 /*
 * sum(n-1)+n
 * fact(n-1)*n
