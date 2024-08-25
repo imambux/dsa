@@ -59,4 +59,40 @@ public class ArrayADT {
 
         return 0;
     }
+
+    /*
+    * O(n)
+    */
+    public int linearSearch(int value) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == value) {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+    /*
+     * O(n)
+     * Improving Linear Search by Transposition
+     * Transposition = If the value is search repeatedly, move it close by swapping to reduce the number of steps
+     * to search for it the next time
+     */
+    public int linearSearchByTransposition(int value) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == value) {
+                // Transposition: swap the value to the forward position to find it faster (one less step) the next time
+                if (i > 0) {
+                    int temp = array[i];
+                    array[i] = array[i - 1];
+                    array[i - 1] = temp;
+                    return i - 1;
+                }
+                return i;
+            }
+        }
+
+        return -1;
+    }
 }
