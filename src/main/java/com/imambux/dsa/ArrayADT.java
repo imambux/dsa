@@ -289,4 +289,104 @@ public class ArrayADT {
 
         array[0] = 0;
     }
+
+    public void insertInSortedArray(int x) {
+        if (!isSorted()) {
+            return;
+        }
+
+        int i = length - 1;
+
+        while (array[i] >= x) {
+            array[i + 1] = array[i];
+            i--;
+        }
+
+        array[i + 1] = x;
+        length++;
+    }
+
+    public boolean isSorted() {
+        for (int i = 0; i < length - 1; i++) {
+            if (array[i] > array[i + 1]) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /*
+    * O(n^2)
+    * */
+    public void negativeElementsOntheLeft() {
+        for (int i = 0; i < length - 1; i++) {
+            if (array[i] >= 0) {
+                for (int j = i + 1; j < length; j++) {
+                    if (array[j] < 0) {
+                        Util.swap(array, i, j);
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    /*
+     * O(3n) = O(n)
+     * */
+    public void negativeElementsOntheLeft2() {
+        int[] allNegatives = new int[length];
+        int[] allPositives = new int[length];
+
+        // get all positives
+        for (int i = 0, j = 0; i < length; i++) {
+            if (array[i] < 0) {
+                allNegatives[j] = array[i];
+                j++;
+            }
+        }
+
+        // get all negatives
+        for (int i = 0, j = 0; i < length; i++) {
+            if (array[i] >= 0) {
+                allPositives[j] = array[i];
+                j++;
+            }
+        }
+
+        for (int i = 0, n = 0, p = 0; i < length; i++) {
+            if (allNegatives[i] < 0) {
+                array[i] = allNegatives[n];
+                n++;
+            } else {
+                array[i] = allPositives[p];
+                p++;
+            }
+        }
+    }
+
+    /*
+    * TC = O(n)
+    * Better solution compared to the others
+    * Only using one loop
+    * */
+    public void negativeElementsOntheLeft3() {
+        for (int i = 0, j = length - 1; i < j;) {
+            // if the value at i is negative, then move to the next element
+            if (array[i] < 0) {
+                i++;
+                continue;
+            }
+
+            // if the value at is positive then find the negative value in element from the end of the list
+            if (array[j] >= 0) {
+                j--;
+                continue;
+            }
+
+            // if the value at i is positive and j is negative, then swap
+            Util.swap(array, i, j);
+        }
+    }
 }
