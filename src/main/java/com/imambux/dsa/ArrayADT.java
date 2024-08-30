@@ -1,5 +1,7 @@
 package com.imambux.dsa;
 
+import com.imambux.dsa.util.Util;
+
 public class ArrayADT {
 
     private int array[];
@@ -247,9 +249,44 @@ public class ArrayADT {
     public void reverse() {
         // reverse loop over the original array and copy each element in the auxiliary array
         for (int i = 0, j = length - 1; i < j; i++, j--) {
-            int temp = array[i];
-            array[i] = array[j];
-            array[j] = temp;
+            Util.swap(array, i, j);
         }
+    }
+
+    public void leftShift() {
+
+        for (int i = 0; i < array.length - 1; i++) {
+            array[i] = array[i + 1];
+        }
+
+        array[length - 1] = 0;
+    }
+
+    public void leftRotate() {
+        int firstValue = array[0];
+
+        for (int i = 0; i < array.length - 1; i++) {
+            array[i] = array[i + 1];
+        }
+
+        array[length - 1] = firstValue;
+    }
+
+    public void rightRotate() {
+        int lastValue = array[length - 1];
+
+        for (int i = length - 1; i > 0; i--) {
+            array[i] = array[i - 1];
+        }
+
+        array[0] = lastValue;
+    }
+
+    public void rightShift() {
+        for (int i = length - 1; i > 0; i--) {
+            array[i] = array[i - 1];
+        }
+
+        array[0] = 0;
     }
 }
