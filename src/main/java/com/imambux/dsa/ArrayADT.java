@@ -389,4 +389,37 @@ public class ArrayADT {
             Util.swap(array, i, j);
         }
     }
+
+    /*
+    * Only on sorted lists
+    * TC = θ(m+n) // when ever m+n then definitly merging is used
+    * θ = Theta instead of Big O because we know that m and n will happen for sure, not worst or best case.
+    * We know for sure that is why Theta symbol.
+    * */
+    public static ArrayADT merge(int[] arr1, int[] arr2) {
+        int i = 0;
+        int j = 0;
+        int k = 0;
+
+        int[] mergedArray = new int[arr1.length + arr2.length];
+
+        while (i < arr1.length && j < arr2.length) {
+            if (arr1[i] < arr2[j]) {
+                mergedArray[k++] = arr1[i++];
+            } else {
+                mergedArray[k++] = arr2[j++];
+            }
+        }
+
+        for (; i < arr1.length; i++) {
+            mergedArray[k++] = arr1[i];
+        }
+
+        for (; j < arr2.length; j++) {
+            mergedArray[k++] = arr2[j];
+        }
+
+        return new ArrayADT(mergedArray, arr1.length + arr2.length);
+    }
+
 }
