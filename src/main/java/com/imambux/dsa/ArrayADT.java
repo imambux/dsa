@@ -218,4 +218,38 @@ public class ArrayADT {
     public int average() {
         return sum() / length;
     }
+
+    /*
+    * Method 1
+    * Take an auxiliary array and copy the elements of the original array in reverse.
+    * Copy the auxiliary array (with reversed values) back into the original array.
+    * TC = 2n (two loops) = O(n)
+    * */
+    public void reverseWithAuxiliaryArray() {
+        int[] auxiliaryArray = new int[length];
+
+        // reverse loop over the original array and copy each element in the auxiliary array
+        for (int i = length - 1, j = 0; i >= 0; i--, j++) {
+            auxiliaryArray[j] = array[i];
+        }
+
+        // copy the reverse elements of an auxiliary array back in the original array
+        for (int i = 0; i < length; i++) {
+            array[i] = auxiliaryArray[i];
+        }
+    }
+
+    /*
+    * Method 2:
+    * In a loop iterate i and j until i < j and swap the values using i and j indices
+    * TC = O(log n) // probably
+    * */
+    public void reverse() {
+        // reverse loop over the original array and copy each element in the auxiliary array
+        for (int i = 0, j = length - 1; i < j; i++, j--) {
+            int temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+    }
 }
