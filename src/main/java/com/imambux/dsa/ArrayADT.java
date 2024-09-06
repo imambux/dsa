@@ -422,4 +422,54 @@ public class ArrayADT {
         return new ArrayADT(mergedArray, arr1.length + arr2.length);
     }
 
+    public static ArrayADT union(int[] arr1, int[] arr2) {
+        int[] undecidedLengthOfUnionedArr = new int[arr1.length + arr2.length];
+
+        for (int i = 0; i < arr1.length; i++) {
+            undecidedLengthOfUnionedArr[i] = arr1[i];
+        }
+        int nextElementInsertionIndex = arr1.length;
+
+        for (int i = 0; i < arr2.length; i++) {
+            boolean valueFound = false;
+            for (int j = 0; j < arr1.length; j++) {
+                if (arr2[i] == undecidedLengthOfUnionedArr[j]) {
+                    valueFound = true;
+                    break;
+                }
+            }
+
+            if (!valueFound) {
+                undecidedLengthOfUnionedArr[nextElementInsertionIndex++] = arr2[i];
+            }
+        }
+
+        int[] decidedLengthOfUnionedArr = new int[nextElementInsertionIndex];
+        for (int i = 0; i < decidedLengthOfUnionedArr.length; i++) {
+            decidedLengthOfUnionedArr[i] = undecidedLengthOfUnionedArr[i];
+        }
+
+        return new ArrayADT(decidedLengthOfUnionedArr, decidedLengthOfUnionedArr.length);
+    }
+
+    public static void main(String[] args) {
+        ArrayADT.union(new int[]{ 1, 5, 4, 10, 12, 16, 6, 18 }, new int[]{6, 11, 17}).display();
+    }
+
+    /*
+    * O(n) - even though there is a nested while loop but that is a negligible work done.
+    * */
+    public static void printMissingElementsInSortedArray(int[] array) {
+        int diff = array[0];
+
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] - i != diff) {
+                while (diff < array[i] - i) {
+                    System.out.printf("%d ", diff + i);
+                    diff++;
+                }
+            }
+        }
+    }
+
 }
