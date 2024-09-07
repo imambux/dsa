@@ -41,6 +41,23 @@ public class StringADT {
         System.out.printf("Vowels: %d, Consonants: %d", vowelsCount, consonantsCount);
     }
 
+    public static void reverseString(String string) {
+        char[] characters = string.toCharArray();
+
+        int i = 0;
+        int j = characters.length - 1;
+
+        while (i < j) {
+            char temp = characters[i];
+            characters[i] = characters[j];
+            characters[j] = temp;
+            i++;
+            j--;
+        }
+
+        System.out.println(characters);
+    }
+
     public static void countWords(String string) {
         int wordCount = 0;
         for (int i = 0; i < string.length(); i++) {
@@ -57,6 +74,7 @@ public class StringADT {
 //        changeCase("WelcomE!!!aBc".toCharArray());
 //        countVowelsAndConsonants(new char[]{'I', 'm', 'a', 'm', '!'});
 //        countWords("Hello there, my name    is Imam Bux.");
+//        reverseString("Imam");
 
     }
 
