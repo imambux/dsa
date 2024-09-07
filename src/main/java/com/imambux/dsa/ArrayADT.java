@@ -493,4 +493,31 @@ public class ArrayADT {
         }
     }
 
+    public static void printDuplicateElementsInSortedArray(int[] array) {
+        // Keep track of the last duplicate so that we do not print the duplicates if they occur 3 times in a row
+        int lastDuplicate = 0;
+
+        for (int i = 0; i < array.length - 1; i++) {
+            if (array[i] == array[i + 1] && array[i] != lastDuplicate) {
+                System.out.printf("%d ", array[i]);
+                lastDuplicate = array[i];
+            }
+        }
+    }
+
+    public static void printNumberOfDuplicatesInSortedArray(int[] array) {
+        for (int i = 0; i < array.length - 1; i++) {
+            if (array[i] == array[i + 1]) {
+                int j = i + 1;
+                while (j < array.length && array[j] == array[i]) {
+                    j++;
+                }
+                System.out.printf("%d: %d times%n", array[i], j - i);
+                i = j - 1;
+            }
+        }
+    }
+
+
+
 }
