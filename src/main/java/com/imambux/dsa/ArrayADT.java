@@ -518,7 +518,7 @@ public class ArrayADT {
         }
     }
 
-    public static void findPairWithSum(int[] arr, int sum, int maxElement) {
+    public static void findPairWithSumWithUnsortedArray(int[] arr, int sum, int maxElement) {
         int[] hashTable = new int[maxElement + 1];
 
         for (int i = 0; i < arr.length; i++) {
@@ -527,6 +527,43 @@ public class ArrayADT {
             }
             hashTable[arr[i]]++;
         }
+    }
+
+    public static void findPairWithSumWithSortedArray(int[] arr, int sum) {
+        int i = 0;
+        int j = arr.length - 1;
+
+        while (i < j) {
+            if (arr[i] + arr[j] > sum) {
+                j--;
+                continue;
+            }
+            if (arr[i] + arr[j] < sum) {
+                i++;
+                continue;
+            }
+
+            System.out.printf("%d + %d = %d%n", arr[i], arr[j], sum);
+            i++;
+            j--;
+        }
+
+    }
+    public static void printMaxAndMinElements(int[] arr) {
+        int max = arr[0];
+        int min = arr[0];
+
+        for (int element : arr) {
+            if (element < min) {
+                min = element;
+                continue;
+            }
+            if (element > max) {
+                max = element;
+            }
+        }
+
+        System.out.printf("Max: %d, Min: %d", max, min);
     }
 
 }
