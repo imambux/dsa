@@ -457,7 +457,7 @@ public class ArrayADT {
     }
 
     /*
-    * O(n) - even though there is a nested while loop but that is a negligible work done.
+    * O(n) - even though there is a nested while loop, but that is a negligible work done.
     * */
     public static void printMissingElementsInSortedArray(int[] array) {
         int diff = array[0];
@@ -468,6 +468,27 @@ public class ArrayADT {
                     System.out.printf("%d ", diff + i);
                     diff++;
                 }
+            }
+        }
+    }
+
+    /*
+    * O(n)
+    * */
+    public static void printMissingElementsInUnsortedArray(int lowestElement, int highestElement, int[] array) {
+        // create a hash table (or bit set) with the length of highest element
+        int[] hashTable = new int[highestElement + 1];
+
+        // mark the corresponding index of hashtable by setting it as 1
+        for (int i = 0; i < array.length; i++) {
+            hashTable[array[i]]++;
+        }
+
+        System.out.println("Missing elements are: ");
+        // start loop from lowestElement and print the missing elements
+        for (int i = lowestElement; i <= hashTable.length; i++) {
+            if (hashTable[i] == 0) {
+                System.out.printf("%d ", i);
             }
         }
     }
