@@ -518,6 +518,15 @@ public class ArrayADT {
         }
     }
 
+    public static void findPairWithSum(int[] arr, int sum, int maxElement) {
+        int[] hashTable = new int[maxElement + 1];
 
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] <= sum && hashTable[sum - arr[i]] != 0) {
+                System.out.printf("%d, %d = %d%n", arr[i], sum - arr[i], sum);
+            }
+            hashTable[arr[i]]++;
+        }
+    }
 
 }
