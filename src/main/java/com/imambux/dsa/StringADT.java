@@ -135,12 +135,38 @@ public class StringADT {
         return true;
     }
 
+    /*
+    * Backtracking
+    * */
+    private static int[] available;
+    private static char[] result;
+    public static void permutation(char[] array, int resultIndex) {
+        if (resultIndex == array.length) {
+            System.out.println(result);
+        } else {
+            for (int i = 0; i < available.length; i++) {
+                if (available[i] == 0) {
+                    available[i] = 1;
+                    result[resultIndex] = array[i];
+
+                    permutation(array, resultIndex + 1);
+
+                    available[i] = 0;
+                }
+            }
+        }
+    }
+
     public static void main(String[] args) {
 //        changeCase("WelcomE!!!aBc".toCharArray());
 //        countVowelsAndConsonants(new char[]{'I', 'm', 'a', 'm', '!'});
 //        countWords("Hello there, my name    is Imam Bux.");
 //        reverseString("Imam");
-        findDuplicatesForLowerCaseOnly("finding");
+//        findDuplicatesForLowerCaseOnly("finding");
+
+        available = new int[3];
+        result = new char[3];
+        permutation(new char[]{'A', 'B', 'C'}, 0);
     }
 
 }
