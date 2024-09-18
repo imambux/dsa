@@ -1,10 +1,12 @@
 package com.imambux.dsa;
 
 public class DiagonalMatrix {
+  int dimension;
   int[] array;
 
   DiagonalMatrix(int size) {
-    array = new int[size];
+    dimension = size;
+    array = new int[dimension];
   }
 
   void set(int i, int j, int x) {
@@ -22,8 +24,8 @@ public class DiagonalMatrix {
   }
 
   void display() {
-    for (int i = 0; i < array.length; i++) {
-      for (int j = 0; j < array.length; j++) {
+    for (int i = 0; i < dimension; i++) {
+      for (int j = 0; j < dimension; j++) {
         if (i == j) {
           System.out.printf("%3d", array[i]);
         } else {
@@ -46,5 +48,6 @@ public class DiagonalMatrix {
 
     System.out.println(diagonalMatrix.get(3, 3));
     System.out.println(diagonalMatrix.get(3, 4));
+    System.out.println(diagonalMatrix.get(4, 4));
   }
 }
